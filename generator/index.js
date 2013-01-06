@@ -1,9 +1,9 @@
 
 var path   = require('path');
 var util   = require('util');
-var yeoman = require('../../../../');
+var yeoman = require('yeoman-generators');
 var grunt  = require('grunt');
-var _      = grunt.util._;
+var _      = (grunt.util || grunt.utils)._;
 
 module.exports = TestGenerator;
 
