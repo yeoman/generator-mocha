@@ -2,7 +2,7 @@
 var path    = require('path');
 var helpers = require('<%= pkg %>').test;
 
-describe('<%= classify(name) %> generator test', function() {
+describe('<%= _classify(name) %> generator test', function() {
   before(helpers.before(path.join(__dirname, './temp')));
 
   it('runs sucessfully', function(done) {
