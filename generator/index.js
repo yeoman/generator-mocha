@@ -15,7 +15,7 @@ function TestGenerator() {
   yeoman.generators.NamedBase.apply(this, arguments);
 
   // dasherize the thing
-  this.filename = this.dasherize(this.name).replace(/:/, '-');
+  this.filename = this._.dasherize(this.name).replace(/:/, '-');
 
   this.argument('files', {
     type: Array,
