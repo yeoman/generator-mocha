@@ -1,9 +1,7 @@
 
 var path   = require('path');
 var util   = require('util');
-var yeoman = require('yeoman-generators');
-var grunt  = require('grunt');
-var _      = (grunt.util || grunt.utils)._;
+var yeoman = require('yeoman-generator');
 
 module.exports = TestGenerator;
 
@@ -17,7 +15,7 @@ function TestGenerator() {
   yeoman.generators.NamedBase.apply(this, arguments);
 
   // dasherize the thing
-  this.filename = _.dasherize(this.name).replace(/:/, '-');
+  this.filename = this.dasherize(this.name).replace(/:/, '-');
 
   this.argument('files', {
     type: Array,
