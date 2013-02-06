@@ -9,15 +9,9 @@
     <div id="mocha"></div>
     <script src="lib/mocha/mocha.js"></script>
     <script>mocha.setup('<%= (options.ui || 'bdd') %>')</script>
-    <!-- assertion framework -->
-    <% if (assert_framework) { %>
-    <script src="lib/<%=  assert_framework %>.js"></script>
-        <% if (assert_framework === 'chai') { %>
-            <% if(assert_style) { %>
-    <script>var <%= assert_style %> = chai.<%= assert_style %></script>
-            <% } %>
-        <% } %>
-    <% } %>
+    <!-- assertion framework --><% if (options['assert-framework']) { %>
+    <script src="lib/<%= options['assert-framework'] %>.js"></script><% if (options['assert-framework'] === 'chai') { %><% if (options['assert-style']) { %>
+    <script>var <%= options['assert-style'] %> = chai.<%= options['assert-style'] %></script><% } %><% } %><% } %>
 
     <!-- include source files here... -->
 
