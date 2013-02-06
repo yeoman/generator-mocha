@@ -1,18 +1,9 @@
-
-var util = require('util'),
-  yeoman = require('yeoman-generator');
-
+'use strict';
 // mocha:app generator
 //
-// Setup the test/ directory.
+// Sets up the test/ directory
 //
-
-module.exports = Generator;
-
-function Generator(args, options, config) {
-
-  yeoman.generators.Base.apply(this, arguments);
-
+var Generator = module.exports = function (args, options) {
   this.option('assert-framework', {
     type: String,
     defaults: 'chai',
@@ -31,14 +22,7 @@ function Generator(args, options, config) {
     defaults: 'bdd'
   });
 
-  // parse arguments for now, manually
-  this.assert_framework = options['assert-framework'] || 'chai';
-  this.assert_style = options['assert-style'] || 'expect';
-}
-
-util.inherits(Generator, yeoman.generators.Base);
-
-Generator.prototype.setupEnv = function setupEnv() {
   this.directory('.', 'test');
 };
 
+Generator.name = 'Mocha';
