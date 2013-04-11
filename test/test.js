@@ -1,31 +1,40 @@
+/*global describe, it, before */
 
-var path    = require('path');
+var path = require('path');
 var helpers = require('yeoman-generator').test;
-var assert  = require("assert");
+var assert = require("assert");
 
 
-describe('Mocha generator test', function() {
-  before(helpers.before(path.join(__dirname, './temp')));
+describe('Mocha generator test', function () {
+  beforeEach(function (done) {
+    helpers.testDirectory(path.join(__dirname, 'temp'), function (err) {
+      if (err) {
+        return done(err);
+      }
+
+      this.generator = helpers.createGenerator('mocha:generator', [
+        '../../generator'
+      ]);
+      done();
+    }.bind(this));
+  });
 
   it('every generator can be required without throwing', function() {
     // not testing the actual run of generators yet
-    this.app = require('../app');
-    this.generator = require('../generator');
+    require('../app');
+    require('../generator');
   });
 
+  describe('mocha:generator', function () {
+    it('should create expected files', function (done) {
+      // FIXME: Doesn't actually check for files yet.
+      var expected = [
+      ];
 
-  // FIXME
-  it.skip('creates expected files', function() {
-
-    // Use helpers.assertFile() to help you test the output of your generator
-    //
-    // Example:
-    //
-    //    // check file exists
-    //    helpers.assertFile('app/model/post.js');
-    //    // Check content
-    //    helpers.assertFile('app/model/post.js', /Backbone\.model/);
-    it('should create expected files');
-
+      this.generator.run({}, function () {
+        helpers.assertFiles(expected);
+        done();
+      });
+    });
   });
 });
