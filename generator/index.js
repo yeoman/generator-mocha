@@ -1,15 +1,9 @@
-
-var path   = require('path');
-var util   = require('util');
+var path = require('path');
+var util = require('util');
 var yeoman = require('yeoman-generator');
 
 module.exports = TestGenerator;
 
-// TestGenerator stubs out a very basic test suite during the generation
-// process of a new generator.
-//
-// XXX:
-//  - consider adding _.string API to generators prototype
 
 function TestGenerator() {
   yeoman.generators.NamedBase.apply(this, arguments);
@@ -36,6 +30,6 @@ function TestGenerator() {
 
 util.inherits(TestGenerator, yeoman.generators.NamedBase);
 
-TestGenerator.prototype.createTestSuite = function() {
+TestGenerator.prototype.createTestSuite = function () {
   this.template('test.js', path.join(this.options.prefix, 'test-' + this.filename + '.js'));
 };

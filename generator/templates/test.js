@@ -1,17 +1,16 @@
-
-var path    = require('path');
+var path = require('path');
 var helpers = require('<%= pkg %>').test;
 
-describe('<%= _.classify(name) %> generator test', function() {
+describe('<%= _.classify(name) %> generator test', function () {
   before(helpers.before(path.join(__dirname, './temp')));
 
-  it('runs sucessfully', function(done) {
+  it('runs sucessfully', function (done) {
     helpers.runGenerator('<%= name %>', done);
   });
 
-  it('creates expected files', function() {
-  <% if(files) {%> <% files.forEach(function(f) { %>
-    helpers.assertFile('<%= f %>');
+  it('creates expected files', function () {
+  <% if (files) {%> <% files.forEach(function (file) { %>
+    helpers.assertFile('<%= file %>');
   <% });%><% } else {%>
     // Use helpers.assertFile() to help you test the output of your generator
     //
