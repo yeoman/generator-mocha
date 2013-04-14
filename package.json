@@ -4,8 +4,7 @@
   "description": "Yeoman generator for Mocha",
   "keywords": [
     "yeoman-generator",
-    "yeoman",
-    "generator",
+    "scaffold",
     "unit",
     "test",
     "bdd",
@@ -22,10 +21,10 @@
     "test": "mocha --reporter spec"
   },
   "dependencies": {
-    "yeoman-generator": "~0.10.0"
+    "yeoman-generator": "~0.10.5"
   },
   "devDependencies": {
-    "mocha": "~1.8.1"
+    "mocha": "~1.9.0"
   },
   "engines": {
     "node": ">=0.8.0"
