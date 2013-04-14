@@ -1,8 +1,8 @@
-/*global describe, it, before */
+/*global describe, beforeEach, it */
+'use strict';
+
 var path = require('path');
 var helpers = require('yeoman-generator').test;
-var assert = require('assert');
-
 
 describe('Mocha generator test', function () {
   beforeEach(function (done) {
@@ -11,27 +11,25 @@ describe('Mocha generator test', function () {
         return done(err);
       }
 
-      this.generator = helpers.createGenerator('mocha:generator', [
-        '../../generator'
+      this.app = helpers.createGenerator('mocha:app', [
+        '../../lib/generators/app'
       ]);
       done();
     }.bind(this));
   });
 
-  it('every generator can be required without throwing', function () {
-    // not testing the actual run of generators yet
-    require('../app');
-    require('../generator');
-  });
+  it('creates expected files', function (done) {
+    var expected = [
+      'spec/test.js',
+      '.bowerrc',
+      'bower.json',
+      'index.html'
+    ];
 
-  describe('mocha:generator', function () {
-    it('should create expected files', function (done) {
-      // FIXME: Doesn't actually check for files yet.
-      var expected = [];
-      this.generator.run({}, function () {
-        helpers.assertFiles(expected);
-        done();
-      });
+    this.app.options['skip-install'] = true;
+    this.app.run({}, function () {
+      helpers.assertFiles(expected);
+      done();
     });
   });
 });
