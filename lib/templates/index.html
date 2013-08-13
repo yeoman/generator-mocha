@@ -9,9 +9,9 @@
 <body>
     <div id="mocha"></div>
     <script src="bower_components/mocha/mocha.js"></script>
-    <script>mocha.setup('bdd')</script>
+    <script>mocha.setup('<%= (options.ui) %>')</script>
     <script src="bower_components/chai/chai.js"></script>
-    <script>var expect = chai.expect</script>
+    <script>var <%= options['assert-style'] %> = chai.<%= options['assert-style'] %></script>
 
     <!-- include source files here... -->
 
