@@ -11,7 +11,11 @@
     <script src="bower_components/mocha/mocha.js"></script>
     <script>mocha.setup('<%= (options.ui) %>')</script>
     <script src="bower_components/chai/chai.js"></script>
-    <script>var <%= options['assert-style'] %> = chai.<%= options['assert-style'] %></script>
+    <script>
+        var assert = chai.assert;
+        var expect = chai.expect;
+        var should = chai.should();
+    </script>
 
     <!-- include source files here... -->
 
