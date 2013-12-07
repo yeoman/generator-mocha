@@ -1,4 +1,4 @@
-/*global describe, beforeEach, it */
+/* global describe, beforeEach, it */
 'use strict';
 
 var path = require('path');
@@ -11,9 +11,11 @@ describe('Mocha generator test', function () {
         return done(err);
       }
 
+      /* jshint -W107 */
       this.app = helpers.createGenerator('mocha:app', [
         '../../lib/generators/app'
       ]);
+      /* jshint +W107 */
       done();
     }.bind(this));
   });
