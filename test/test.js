@@ -22,9 +22,9 @@ describe('Mocha generator test', function () {
 
   it('creates expected files', function (done) {
     var expected = [
-      'spec/test.js',
-      'bower.json',
-      'index.html'
+      'test/spec/test.js',
+      'test/bower.json',
+      'test/index.html'
     ];
 
     this.app.options['skip-install'] = true;
