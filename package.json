@@ -10,8 +10,6 @@
     "bdd",
     "tdd"
   ],
-  "homepage": "https://github.com/yeoman/generator-mocha",
-  "bugs": "https://github.com/yeoman/generator-mocha/issues",
   "author": "Chrome Developer Relations",
   "repository": {
     "type": "git",
@@ -21,16 +19,16 @@
     "test": "mocha --reporter spec"
   },
   "dependencies": {
-    "yeoman-generator": "~0.14.0"
+    "yeoman-generator": "~0.16.0"
   },
   "devDependencies": {
-    "mocha": "~1.14.0"
+    "mocha": "*"
   },
   "peerDependencies": {
-    "yo": ">=1.0.0-rc.1.1"
+    "yo": ">=1.0.0"
   },
   "engines": {
-    "node": ">=0.8.0",
+    "node": ">=0.10.0",
     "npm": ">=1.2.10"
   },
   "licenses": [
