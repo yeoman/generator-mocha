@@ -10,7 +10,7 @@
     "bdd",
     "tdd"
   ],
-  "author": "Chrome Developer Relations",
+  "author": "The Yeoman Team",
   "repository": {
     "type": "git",
     "url": "git://github.com/yeoman/generator-mocha.git"
