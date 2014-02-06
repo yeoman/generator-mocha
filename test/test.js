@@ -1,8 +1,9 @@
 /* global describe, beforeEach, it */
 'use strict';
 
-var path = require('path');
+var assert = require('yeoman-generator').assert;
 var helpers = require('yeoman-generator').test;
+var path = require('path');
 
 describe('Mocha generator test', function () {
   beforeEach(function (done) {
@@ -13,7 +14,7 @@ describe('Mocha generator test', function () {
 
       /* jshint -W107 */
       this.app = helpers.createGenerator('mocha:app', [
-        '../../lib/generators/app'
+        '../../generators/app'
       ]);
       /* jshint +W107 */
       done();
@@ -23,14 +24,14 @@ describe('Mocha generator test', function () {
   it('creates expected files', function (done) {
     var expected = [
       'test/spec/test.js',
+      'test/.bowerrc',
       'test/bower.json',
       'test/index.html'
     ];
 
     this.app.options['skip-install'] = true;
     this.app.run({}, function () {
-      helpers.assertFiles(expected);
-      done();
+      done(assert.file(expected));
     });
   });
 });
