@@ -16,11 +16,9 @@ function Generator(args, options) {
   yeoman.generators.Base.apply(this, arguments);
 
   this.sourceRoot(path.join(__dirname, '../../', 'templates'));
-  this.option('ui', {
-    desc: 'Choose your style of DSL (bdd, tdd, qunit, or exports)',
-    type: String,
-    defaults: 'bdd'
-  });
+
+  this.options.ui = options.ui || 'bdd';
+  this.options.rjs = options.rjs;
 }
 
 util.inherits(Generator, yeoman.generators.Base);
