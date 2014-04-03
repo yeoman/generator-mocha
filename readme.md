@@ -1,4 +1,4 @@
-# Mocha generator [![Build Status](https://secure.travis-ci.org/yeoman/generator-mocha.png?branch=master)](http://travis-ci.org/yeoman/generator-mocha)
+# Mocha generator [![Build Status](https://secure.travis-ci.org/yeoman/generator-mocha.svg?branch=master)](http://travis-ci.org/yeoman/generator-mocha)
 
 
 ## Getting Started
