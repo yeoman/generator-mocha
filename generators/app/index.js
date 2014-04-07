@@ -1,7 +1,6 @@
 'use strict';
 
 var path = require('path');
-var util = require('util');
 var yeoman = require('yeoman-generator');
 
 /**
@@ -11,56 +10,57 @@ var yeoman = require('yeoman-generator');
  * @param {Object} options
  * @api public
  */
+var MochaGenerator = yeoman.generators.Base.extend({
+  constructor: function (){
+    yeoman.generators.Base.apply(this, arguments);
 
-function Generator(args, options) {
-  yeoman.generators.Base.apply(this, arguments);
+    this.option('ui', {
+      desc: 'Choose your style of DSL (bdd, tdd, qunit, or exports)',
+      type: String,
+      defaults: 'bdd'
+    });
+  },
 
-  this.sourceRoot(path.join(__dirname, '../../', 'templates'));
-  this.option('ui', {
-    desc: 'Choose your style of DSL (bdd, tdd, qunit, or exports)',
-    type: String,
-    defaults: 'bdd'
-  });
-}
+  configuring: function () {
+    this.config.save();
+  },
 
-util.inherits(Generator, yeoman.generators.Base);
+  /**
+   * Setup environment
+   *
+   * @api public
+   */
+  setupEnv: function () {
+    this.template('_bower.json', 'test/bower.json');
+    this.template('bowerrc', 'test/.bowerrc');
+    this.template('test.js', 'test/spec/test.js');
+    this.template('index.html', 'test/index.html');
+  },
 
-/**
- * Setup environment
- *
- * @api public
- */
+  /**
+   * Install dependencies
+   *
+   * @api public
+   */
+  install: function () {
+    if (this.options['skip-install']) {
+      return;
+    }
 
-Generator.prototype.setupEnv = function () {
-  this.copy('_bower.json', 'test/bower.json');
-  this.copy('bowerrc', 'test/.bowerrc');
-  this.copy('test.js', 'test/spec/test.js');
-  this.copy('index.html', 'test/index.html');
-};
+    var done = this.async();
+    process.chdir('test');
 
-/**
- * Install dependencies
- *
- * @api public
- */
-
-Generator.prototype.install = function () {
-  if (this.options['skip-install']) {
-    return;
+    this.installDependencies({
+      npm: false,
+      skipInstall: this.options['skip-install'],
+      skipMessage: true,
+      callback: done
+    });
   }
-
-  var done = this.async();
-  process.chdir('test');
-
-  this.installDependencies({
-    npm: false,
-    skipInstall: this.options['skip-install'],
-    callback: done
-  });
-};
+});
 
 /**
  * Module exports
  */
 
-module.exports = Generator;
+module.exports = MochaGenerator;
