@@ -7,19 +7,18 @@
     "scaffold",
     "unit",
     "test",
+    "testing",
     "bdd",
-    "tdd"
+    "tdd",
+    "mocha"
   ],
   "author": "The Yeoman Team",
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/yeoman/generator-mocha.git"
-  },
+  "repository": "yeoman/generator-mocha",
   "scripts": {
     "test": "mocha --reporter spec"
   },
   "dependencies": {
-    "yeoman-generator": "~0.17.0"
+    "yeoman-generator": "^0.17.0"
   },
   "devDependencies": {
     "mocha": "*"
@@ -31,12 +30,8 @@
     "node": ">=0.10.0",
     "npm": ">=1.2.10"
   },
-  "licenses": [
-    {
-      "type": "BSD"
-    }
-  ],
+  "license": "BSD",
   "files": [
-    "lib"
+    "generators"
   ]
 }
