@@ -1,9 +1,20 @@
 # Mocha generator [![Build Status](https://secure.travis-ci.org/yeoman/generator-mocha.svg?branch=master)](http://travis-ci.org/yeoman/generator-mocha)
 
+> Yeoman generator for [Mocha](http://visionmedia.github.io/mocha/)
 
-## Getting Started
 
-Install: `npm install -g generator-mocha`
+## Install
+
+```sh
+$ npm install --global generator-mocha
+```
+
+
+## Usage
+
+```sh
+$ yo mocha
+```
 
 
 ## Contribute
