@@ -11,14 +11,43 @@ var yeoman = require('yeoman-generator');
  * @api public
  */
 var MochaGenerator = yeoman.generators.Base.extend({
-  constructor: function (){
+  constructor: function () {
     yeoman.generators.Base.apply(this, arguments);
 
     this.option('ui', {
-      desc: 'Choose your style of DSL (bdd, tdd, qunit, or exports)',
+      desc: 'Choose your style of DSL (bdd, tdd)',
       type: String,
       defaults: 'bdd'
     });
+
+    this.option('skip-install', {
+      desc: 'Skip the bower and node installations',
+      defaults: false
+    });
+  },
+
+  prompting: function () {
+    var cb = this.async();
+
+    var prompts = [{
+      type: 'list',
+      name: 'ui',
+      message: 'Choose your style of DSL (bdd, tdd)',
+      choices: [{
+        name: 'BDD',
+        value: 'bdd',
+      }, {
+        name: 'TDD',
+        value: 'tdd',
+      }]
+    }];
+
+    this.prompt(prompts, function (answers) {
+      this.config.set('ui', answers.ui);
+      this.options.ui = answers.ui;
+
+      cb();
+    }.bind(this));
   },
 
   configuring: function () {
