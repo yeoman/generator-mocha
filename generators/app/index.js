@@ -30,7 +30,7 @@ var MochaGenerator = yeoman.generators.Base.extend({
    *
    * @api public
    */
-  setupEnv: function () {
+  writing: function () {
     this.template('_bower.json', 'test/bower.json');
     this.template('bowerrc', 'test/.bowerrc');
     this.template('test.js', 'test/spec/test.js');
@@ -47,14 +47,12 @@ var MochaGenerator = yeoman.generators.Base.extend({
       return;
     }
 
-    var done = this.async();
     process.chdir('test');
 
     this.installDependencies({
       npm: false,
       skipInstall: this.options['skip-install'],
-      skipMessage: true,
-      callback: done
+      skipMessage: true
     });
   }
 });
