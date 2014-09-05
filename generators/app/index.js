@@ -1,6 +1,5 @@
 'use strict';
 
-var path = require('path');
 var yeoman = require('yeoman-generator');
 
 /**
@@ -47,14 +46,12 @@ var MochaGenerator = yeoman.generators.Base.extend({
       return;
     }
 
-    var done = this.async();
     process.chdir('test');
 
     this.installDependencies({
       npm: false,
       skipInstall: this.options['skip-install'],
-      skipMessage: true,
-      callback: done
+      skipMessage: true
     });
   }
 });
