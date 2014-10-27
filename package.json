@@ -12,6 +12,7 @@
     "tdd",
     "mocha"
   ],
+  "main": "generators/app/index.js",
   "author": "The Yeoman Team",
   "repository": "yeoman/generator-mocha",
   "scripts": {
