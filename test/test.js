@@ -7,31 +7,44 @@ var path = require('path');
 
 describe('Mocha generator test', function () {
   beforeEach(function (done) {
-    helpers.testDirectory(path.join(__dirname, 'temp'), function (err) {
-      if (err) {
-        return done(err);
-      }
+    this.app = helpers.run(path.join(__dirname, '../generators/app'))
+      .inDir(path.join(__dirname, 'temp'))
+      .withOptions({'skip-install': true});
 
-      /* jshint -W107 */
-      this.app = helpers.createGenerator('mocha:app', [
-        '../../generators/app'
-      ]);
-      /* jshint +W107 */
-      done();
-    }.bind(this));
+    done();
   });
 
-  it('creates expected files', function (done) {
-    var expected = [
-      'test/spec/test.js',
-      'test/.bowerrc',
-      'test/bower.json',
-      'test/index.html'
-    ];
+  describe('creates expected files', function () {
+    it('when --ui=bdd', function (done) {
+      var expected = [
+        'test/spec/test.js',
+        'test/.bowerrc',
+        'test/bower.json',
+        'test/index.html'
+      ];
 
-    this.app.options['skip-install'] = true;
-    this.app.run({}, function () {
-      done(assert.file(expected));
+      this.app
+        .withPrompt({ui: 'bdd'})
+        .on('end', function () {
+          assert.fileContent('test/index.html', /mocha.setup\('bdd'\)/);
+          done(assert.file(expected));
+        });
+    });
+
+    it('when --ui=tdd', function (done) {
+      var expected = [
+        'test/spec/test.js',
+        'test/.bowerrc',
+        'test/bower.json',
+        'test/index.html'
+      ];
+
+      this.app
+        .withPrompt({ui: 'tdd'})
+        .on('end', function () {
+          assert.fileContent('test/index.html', /mocha.setup\('tdd'\)/);
+          done(assert.file(expected));
+        });
     });
   });
 });
