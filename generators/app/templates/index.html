@@ -32,7 +32,7 @@
          * the injected js by grunt-mocha will execute mocha.run() when everything has been done
          * add this if conditions to avoid no necessary mocha.run()
          */
-        if (navigator.userAgent.indexOf('PhantomJS') < 0) {
+        if (navigator.userAgent.indexOf('PhantomJS') === -1) {
             mocha.run();
         }
     </script>
