@@ -1,6 +1,5 @@
-/* global describe, beforeEach, it */
+/*global describe, beforeEach, it */
 'use strict';
-
 var assert = require('yeoman-generator').assert;
 var helpers = require('yeoman-generator').test;
 var path = require('path');
@@ -9,7 +8,8 @@ describe('Mocha generator test', function () {
   beforeEach(function (done) {
     helpers.testDirectory(path.join(__dirname, 'temp'), function (err) {
       if (err) {
-        return done(err);
+        done(err);
+        return;
       }
 
       /* jshint -W107 */
@@ -30,7 +30,7 @@ describe('Mocha generator test', function () {
     ];
 
     this.app.options['skip-install'] = true;
-    this.app.run({}, function () {
+    this.app.run(function () {
       done(assert.file(expected));
     });
   });
