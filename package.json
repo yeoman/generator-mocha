@@ -25,7 +25,6 @@
     "mocha"
   ],
   "dependencies": {
-    "slugify": "^0.1.1",
     "yeoman-generator": "^0.19.2"
   },
   "devDependencies": {

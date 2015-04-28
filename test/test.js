@@ -15,8 +15,6 @@ describe('mocha:app', function () {
   it('creates expected files', function () {
     assert.file([
       'test/spec/test.js',
-      'test/.bowerrc',
-      'test/bower.json',
       'test/index.html'
     ]);
   });

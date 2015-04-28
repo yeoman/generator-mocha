@@ -1,9 +1,0 @@
-{
-  "name": "<%= slugname %>",
-  "private": true,
-  "dependencies": {
-    "chai": "~2.3.0",
-    "mocha": "~2.2.4"<% if (options.rjs) { %>,
-    "requirejs": "~2.1.10"<% } %>
-  }
-}
