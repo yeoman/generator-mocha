@@ -5,14 +5,14 @@
 
 ## Install
 
-```sh
+```
 $ npm install --global generator-mocha
 ```
 
 
 ## Usage
 
-```sh
+```
 $ yo mocha
 ```
 
