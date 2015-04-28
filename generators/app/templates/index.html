@@ -24,6 +24,17 @@
     <!-- include spec files here... -->
     <script src="spec/test.js"></script>
 
-    <script>mocha.run()</script>
+    <!-- run mocha after all test are loaded -->
+    <script>
+
+        /*
+         * Only tests run in real browser, if grunt-mocha options.run == true
+         * the injected js by grunt-mocha will execute mocha.run() when everything has been done
+         * add this if conditions to avoid no necessary mocha.run()
+         */
+        if (navigator.userAgent.indexOf('PhantomJS') === -1) {
+            mocha.run();
+        }
+    </script>
 </body>
 </html>
