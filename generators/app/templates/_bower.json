@@ -2,8 +2,8 @@
   "name": "<%= _.slugify(appname) %>",
   "private": true,
   "dependencies": {
-    "chai": "~1.8.0",
-    "mocha": "~1.14.0"
+    "chai": "~2.3.0",
+    "mocha": "~2.2.4"
   },
   "devDependencies": {}
 }
