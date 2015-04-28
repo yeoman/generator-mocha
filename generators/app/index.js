@@ -2,15 +2,8 @@
 
 var yeoman = require('yeoman-generator');
 
-/**
- * Initialize Mocha generator
- *
- * @param {String|Array} args
- * @param {Object} options
- * @api public
- */
-var MochaGenerator = yeoman.generators.Base.extend({
-  constructor: function (){
+module.exports = yeoman.generators.Base.extend({
+  constructor: function () {
     yeoman.generators.Base.apply(this, arguments);
 
     this.option('ui', {
@@ -24,11 +17,6 @@ var MochaGenerator = yeoman.generators.Base.extend({
     this.config.save();
   },
 
-  /**
-   * Setup environment
-   *
-   * @api public
-   */
   writing: function () {
     this.template('_bower.json', 'test/bower.json');
     this.template('bowerrc', 'test/.bowerrc');
@@ -36,18 +24,12 @@ var MochaGenerator = yeoman.generators.Base.extend({
     this.template('index.html', 'test/index.html');
   },
 
-  /**
-   * Install dependencies
-   *
-   * @api public
-   */
   install: function () {
     if (this.options['skip-install']) {
       return;
     }
 
     process.chdir('test');
-
     this.installDependencies({
       npm: false,
       skipInstall: this.options['skip-install'],
@@ -55,9 +37,3 @@ var MochaGenerator = yeoman.generators.Base.extend({
     });
   }
 });
-
-/**
- * Module exports
- */
-
-module.exports = MochaGenerator;
