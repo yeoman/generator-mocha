@@ -1,6 +1,6 @@
 # Mocha generator [![Build Status](https://secure.travis-ci.org/yeoman/generator-mocha.svg?branch=master)](http://travis-ci.org/yeoman/generator-mocha)
 
-> Yeoman generator for [Mocha](http://visionmedia.github.io/mocha/)
+> Yeoman generator for [Mocha](http://mochajs.org/)
 
 
 ## Install
