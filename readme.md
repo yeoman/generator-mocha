@@ -6,7 +6,7 @@
 ## Install
 
 ```
-$ npm install -g generator-mocha
+$ npm install --global generator-mocha
 ```
 
 
