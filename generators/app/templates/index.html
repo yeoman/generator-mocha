@@ -29,6 +29,10 @@
   <!-- include source files here... -->
   <!-- include spec files here... -->
   <script src="spec/test.js"></script>
-  <script>mocha.run();</script><% } %>
+  <script>
+    if (navigator.userAgent.indexOf('PhantomJS') === -1) {
+      mocha.run();
+    }
+  </script><% } %>
 </body>
 </html>
