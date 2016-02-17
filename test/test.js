@@ -18,4 +18,13 @@ describe('mocha:app', function () {
       'test/index.html'
     ]);
   });
+
+  it('saves the options used', function () {
+    assert.jsonFileContent(__dirname + '/tmp/.yo-rc.json', {
+      'generator-mocha': {
+        ui: 'bdd',
+        rjs: false
+      }
+    });
+  });
 });
