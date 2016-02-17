@@ -18,7 +18,8 @@ module.exports = generators.Base.extend({
   },
 
   configuring: function () {
-    this.config.save();
+    this.config.set('ui', this.options.ui);
+    this.config.set('rjs', !!this.options.rjs);
   },
 
   writing: function () {
