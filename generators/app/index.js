@@ -6,15 +6,32 @@ module.exports = generators.Base.extend({
     generators.Base.apply(this, arguments);
 
     this.option('ui', {
-      desc: 'Choose your style of DSL (bdd, tdd, qunit, or exports)',
-      type: String,
-      defaults: 'bdd'
+      desc: 'Choose your style of DSL (bdd, tdd)',
+      type: String
     });
 
     this.option('rjs', {
       desc: 'Add support for RequireJS',
       type: Boolean
     });
+  },
+
+  prompting: function () {
+    var done = this.async();
+
+    var prompts = [{
+      type: 'list',
+      name: 'ui',
+      message: 'Choose your style of DSL',
+      choices: ['BDD', 'TDD'],
+      default: 'BDD',
+      when: !this.options.ui
+    }];
+
+    this.prompt(prompts, function (answers) {
+      this.options.ui = (this.options.ui || answers.ui).toLowerCase();
+      done();
+    }.bind(this));
   },
 
   configuring: function () {
