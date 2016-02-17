@@ -1,8 +1,8 @@
 /*global describe, beforeEach, it*/
 'use strict';
 var path = require('path');
-var assert = require('yeoman-generator').assert;
-var helpers = require('yeoman-generator').test;
+var helpers = require('yeoman-test');
+var assert = require('yeoman-assert');
 
 describe('mocha:app', function () {
   beforeEach(function (done) {

@@ -1,9 +1,9 @@
 'use strict';
-var yeoman = require('yeoman-generator');
+var generators = require('yeoman-generator');
 
-module.exports = yeoman.generators.Base.extend({
+module.exports = generators.Base.extend({
   constructor: function () {
-    yeoman.generators.Base.apply(this, arguments);
+    generators.Base.apply(this, arguments);
 
     this.option('ui', {
       desc: 'Choose your style of DSL (bdd, tdd, qunit, or exports)',
