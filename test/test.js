@@ -9,7 +9,6 @@ describe('mocha:app', function () {
     beforeEach(function (done) {
       helpers
         .run(path.join(__dirname, '../generators/app'))
-        .inDir(path.join(__dirname, 'tmp'))
         .on('end', done);
     });
 
@@ -22,7 +21,7 @@ describe('mocha:app', function () {
     });
 
     it('saves the options used', function () {
-      assert.jsonFileContent(__dirname + '/tmp/.yo-rc.json', {
+      assert.jsonFileContent('.yo-rc.json', {
         'generator-mocha': {
           ui: 'bdd',
           rjs: false
@@ -35,7 +34,6 @@ describe('mocha:app', function () {
     it('when --ui=bdd', function (done) {
       helpers
       .run(path.join(__dirname, '../generators/app'))
-      .inDir(path.join(__dirname, 'tmp'))
       .withOptions({ui: 'bdd'})
       .on('end', function () {
         assert.fileContent('test/index.html', /mocha.setup\('bdd'\)/);
@@ -46,7 +44,6 @@ describe('mocha:app', function () {
     it('when --ui=tdd', function (done) {
       helpers
       .run(path.join(__dirname, '../generators/app'))
-      .inDir(path.join(__dirname, 'tmp'))
       .withOptions({ui: 'tdd'})
       .on('end', function () {
         assert.fileContent('test/index.html', /mocha.setup\('tdd'\)/);
@@ -59,7 +56,6 @@ describe('mocha:app', function () {
     it('when --ui=bdd', function (done) {
       helpers
       .run(path.join(__dirname, '../generators/app'))
-      .inDir(path.join(__dirname, 'tmp'))
       .withPrompts({ui: 'bdd'})
       .on('end', function () {
         assert.fileContent('test/index.html', /mocha.setup\('bdd'\)/);
@@ -70,7 +66,6 @@ describe('mocha:app', function () {
     it('when --ui=tdd', function (done) {
       helpers
       .run(path.join(__dirname, '../generators/app'))
-      .inDir(path.join(__dirname, 'tmp'))
       .withPrompts({ui: 'tdd'})
       .on('end', function () {
         assert.fileContent('test/index.html', /mocha.setup\('tdd'\)/);
