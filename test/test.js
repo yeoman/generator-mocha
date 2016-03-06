@@ -37,6 +37,8 @@ describe('mocha:app', function () {
       .withOptions({ui: 'bdd'})
       .on('end', function () {
         assert.fileContent('test/index.html', /mocha.setup\('bdd'\)/);
+        assert.fileContent('test/spec/test.js', /describe/);
+        assert.fileContent('test/spec/test.js', /it/);
         done()
       });
     });
@@ -47,6 +49,8 @@ describe('mocha:app', function () {
       .withOptions({ui: 'tdd'})
       .on('end', function () {
         assert.fileContent('test/index.html', /mocha.setup\('tdd'\)/);
+        assert.fileContent('test/spec/test.js', /suite/);
+        assert.fileContent('test/spec/test.js', /test/);
         done();
       });
     });
