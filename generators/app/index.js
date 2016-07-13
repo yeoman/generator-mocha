@@ -6,7 +6,7 @@ module.exports = generators.Base.extend({
     generators.Base.apply(this, arguments);
 
     this.option('ui', {
-      desc: 'Choose your style of DSL (bdd, tdd)',
+      desc: 'Choose your style of test DSL for Mocha (bdd, tdd)',
       type: String
     });
 
