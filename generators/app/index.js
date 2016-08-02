@@ -28,7 +28,7 @@ module.exports = generators.Base.extend({
       when: !this.options.ui
     }];
 
-    this.prompt(prompts, function (answers) {
+    this.prompt(prompts).then(function (answers) {
       this.options.ui = (this.options.ui || answers.ui).toLowerCase();
       done();
     }.bind(this));
