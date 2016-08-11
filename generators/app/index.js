@@ -40,7 +40,7 @@ module.exports = generators.Base.extend({
   },
 
   writing: function () {
-    this.template('test.js', 'test/spec/test.js');
+    this.template('test-' + this.options.ui + '.js', 'test/spec/test.js');
     this.template('index.html', 'test/index.html');
   },
 
