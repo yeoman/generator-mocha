@@ -1,5 +1,7 @@
 # Mocha generator [![Build Status](https://secure.travis-ci.org/yeoman/generator-mocha.svg?branch=master)](http://travis-ci.org/yeoman/generator-mocha)
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/yeoman/generator-mocha.svg)](https://greenkeeper.io/)
+
 > Yeoman generator for [Mocha](http://mochajs.org/)
 
 
