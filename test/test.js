@@ -1,18 +1,18 @@
 /*global describe, beforeEach, it*/
 'use strict';
-var path = require('path');
-var helpers = require('yeoman-test');
-var assert = require('yeoman-assert');
+const path = require('path');
+const helpers = require('yeoman-test');
+const assert = require('yeoman-assert');
 
-describe('mocha:app', function () {
-  describe('defaults', function () {
-    beforeEach(function (done) {
+describe('mocha:app', () => {
+  describe('defaults', () => {
+    beforeEach(done => {
       helpers
         .run(path.join(__dirname, '../generators/app'))
         .on('end', done);
     });
 
-    it('creates expected files', function () {
+    it('creates expected files', () => {
       assert.file([
         'test/spec/test.js',
         'test/index.html'
@@ -20,7 +20,7 @@ describe('mocha:app', function () {
       assert.fileContent('test/index.html', /mocha.setup\('bdd'\)/);
     });
 
-    it('saves the options used', function () {
+    it('saves the options used', () => {
       assert.jsonFileContent('.yo-rc.json', {
         'generator-mocha': {
           ui: 'bdd',
@@ -30,44 +30,44 @@ describe('mocha:app', function () {
     });
   })
 
-  describe('using options', function () {
-    it('when --ui=bdd', function (done) {
+  describe('using options', () => {
+    it('when --ui=bdd', done => {
       helpers
       .run(path.join(__dirname, '../generators/app'))
       .withOptions({ui: 'bdd'})
-      .on('end', function () {
+      .on('end', () => {
         assert.fileContent('test/index.html', /mocha.setup\('bdd'\)/);
         done()
       });
     });
 
-    it('when --ui=tdd', function (done) {
+    it('when --ui=tdd', done => {
       helpers
       .run(path.join(__dirname, '../generators/app'))
       .withOptions({ui: 'tdd'})
-      .on('end', function () {
+      .on('end', () => {
         assert.fileContent('test/index.html', /mocha.setup\('tdd'\)/);
         done();
       });
     });
   });
 
-  describe('using prompts', function () {
-    it('when --ui=bdd', function (done) {
+  describe('using prompts', () => {
+    it('when --ui=bdd', done => {
       helpers
       .run(path.join(__dirname, '../generators/app'))
       .withPrompts({ui: 'bdd'})
-      .on('end', function () {
+      .on('end', () => {
         assert.fileContent('test/index.html', /mocha.setup\('bdd'\)/);
         done()
       });
     });
 
-    it('when --ui=tdd', function (done) {
+    it('when --ui=tdd', done => {
       helpers
       .run(path.join(__dirname, '../generators/app'))
       .withPrompts({ui: 'tdd'})
-      .on('end', function () {
+      .on('end', () => {
         assert.fileContent('test/index.html', /mocha.setup\('tdd'\)/);
         done();
       });
