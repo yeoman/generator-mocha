@@ -6,7 +6,7 @@
   "repository": "yeoman/generator-mocha",
   "author": "The Yeoman Team",
   "engines": {
-    "node": ">=0.10.0"
+    "node": ">=4"
   },
   "scripts": {
     "test": "mocha"
@@ -25,11 +25,11 @@
     "mocha"
   ],
   "dependencies": {
-    "yeoman-generator": "^0.24.1"
+    "yeoman-generator": "^1.1.1"
   },
   "devDependencies": {
     "mocha": "*",
-    "yeoman-assert": "^2.1.1",
+    "yeoman-assert": "^3.0.0",
     "yeoman-test": "^1.1.0"
   }
 }

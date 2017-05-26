@@ -1,9 +1,9 @@
 'use strict';
-var generators = require('yeoman-generator');
+const Generator = require('yeoman-generator');
 
-module.exports = generators.Base.extend({
-  constructor: function () {
-    generators.Base.apply(this, arguments);
+module.exports = class extends Generator {
+  constructor(args, opts) {
+    super(args, opts);
 
     this.option('ui', {
       desc: 'Choose your style of test DSL for Mocha (bdd, tdd)',
@@ -14,12 +14,12 @@ module.exports = generators.Base.extend({
       desc: 'Add support for RequireJS',
       type: Boolean
     });
-  },
+  }
 
-  prompting: function () {
-    var done = this.async();
+  prompting() {
+    const done = this.async();
 
-    var prompts = [{
+    const prompts = [{
       type: 'list',
       name: 'ui',
       message: 'Choose your style of DSL',
@@ -28,28 +28,39 @@ module.exports = generators.Base.extend({
       when: !this.options.ui
     }];
 
-    this.prompt(prompts).then(function (answers) {
+    this.prompt(prompts).then(answers => {
       this.options.ui = (this.options.ui || answers.ui).toLowerCase();
       done();
-    }.bind(this));
-  },
+    });
+  }
 
-  configuring: function () {
+  configuring() {
     this.config.set('ui', this.options.ui);
     this.config.set('rjs', !!this.options.rjs);
-  },
+  }
 
-  writing: function () {
-    this.template('test.js', 'test/spec/test.js');
-    this.template('index.html', 'test/index.html');
-  },
+  writing() {
+    this.fs.copy(
+      this.templatePath('test.js'),
+      this.destinationPath('test/spec/test.js')
+    );
 
-  install: function () {
+    this.fs.copyTpl(
+      this.templatePath('index.html'),
+      this.destinationPath('test/index.html'),
+      {
+        ui: this.options.ui,
+        rjs: this.options.rjs
+      }
+    );
+  }
+
+  install() {
     if (this.options['skip-install']) {
       return;
     }
 
-    var dependencies = [
+    const dependencies = [
       'chai',
       'mocha'
     ];
@@ -60,4 +71,4 @@ module.exports = generators.Base.extend({
 
     this.bowerInstall(dependencies, {saveDev: true});
   }
-});
+}

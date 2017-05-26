@@ -8,13 +8,13 @@
 <body>
   <div id="mocha"></div>
   <script src="../bower_components/mocha/mocha.js"></script>
-  <script>mocha.setup('<%= (options.ui) %>');</script>
+  <script>mocha.setup('<%= ui %>');</script>
   <script src="../bower_components/chai/chai.js"></script>
   <script>
     var assert = chai.assert;
     var expect = chai.expect;
     var should = chai.should();
-  </script><% if (options.rjs) { %>
+  </script><% if (rjs) { %>
   <script src="../bower_components/requirejs/require.js"></script>
   <script>
     require([
