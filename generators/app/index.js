@@ -56,8 +56,10 @@ module.exports = class extends Generator {
   }
 
   install() {
-    if (this.options['skip-install']) {
-      return;
+    if (!this.options['skip-install']) {
+      this.installDependencies({
+        bower: false
+      });
     }
 
     const dependencies = [
@@ -69,6 +71,6 @@ module.exports = class extends Generator {
       dependencies.push('requirejs');
     }
 
-    this.bowerInstall(dependencies, {saveDev: true});
+    this.npmInstall(dependencies, {saveDev: true});
   }
 }
