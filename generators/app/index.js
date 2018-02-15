@@ -6,7 +6,7 @@ module.exports = class extends Generator {
     super(args, opts);
 
     this.option('ui', {
-      desc: 'Choose your style of test DSL for Mocha (bdd, tdd)',
+      desc: `Choose the interface style (bdd, tdd)`,
       type: String
     });
 
@@ -22,14 +22,23 @@ module.exports = class extends Generator {
     const prompts = [{
       type: 'list',
       name: 'ui',
-      message: 'Choose your style of DSL',
-      choices: ['BDD', 'TDD'],
+      message: `Choose the interface style for Mocha`,
+      choices: [
+        {
+          name: 'BDD (Behavior-Driven Development)',
+          value: 'bdd'
+        },
+        {
+          name: 'TDD (Test-Driven Development)',
+          value: 'tdd'
+        }
+      ],
       default: 'BDD',
       when: !this.options.ui
     }];
 
     this.prompt(prompts).then(answers => {
-      this.options.ui = (this.options.ui || answers.ui).toLowerCase();
+      this.options.ui = this.options.ui || answers.ui;
       done();
     });
   }
