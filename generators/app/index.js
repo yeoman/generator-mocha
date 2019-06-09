@@ -33,7 +33,7 @@ module.exports = class extends Generator {
           value: 'tdd'
         }
       ],
-      default: 'BDD',
+      default: 'bdd',
       when: !this.options.ui
     }];
 
