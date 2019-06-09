@@ -6,7 +6,7 @@
   "repository": "yeoman/generator-mocha",
   "author": "The Yeoman Team",
   "engines": {
-    "node": ">=4"
+    "node": ">=6"
   },
   "scripts": {
     "test": "mocha"
