@@ -37,6 +37,7 @@ describe('mocha:app', () => {
       .withOptions({ui: 'bdd'})
       .on('end', () => {
         assert.fileContent('test/index.html', /mocha.setup\('bdd'\)/);
+        assert.fileContent('test/spec/test.js', /describe/);
         done()
       });
     });
@@ -47,6 +48,7 @@ describe('mocha:app', () => {
       .withOptions({ui: 'tdd'})
       .on('end', () => {
         assert.fileContent('test/index.html', /mocha.setup\('tdd'\)/);
+        assert.fileContent('test/spec/test.js', /suite/);
         done();
       });
     });
@@ -59,6 +61,7 @@ describe('mocha:app', () => {
       .withPrompts({ui: 'bdd'})
       .on('end', () => {
         assert.fileContent('test/index.html', /mocha.setup\('bdd'\)/);
+        assert.fileContent('test/spec/test.js', /describe/);
         done()
       });
     });
@@ -69,6 +72,7 @@ describe('mocha:app', () => {
       .withPrompts({ui: 'tdd'})
       .on('end', () => {
         assert.fileContent('test/index.html', /mocha.setup\('tdd'\)/);
+        assert.fileContent('test/spec/test.js', /suite/);
         done();
       });
     });

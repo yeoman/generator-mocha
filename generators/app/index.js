@@ -49,9 +49,12 @@ module.exports = class extends Generator {
   }
 
   writing() {
-    this.fs.copy(
+    this.fs.copyTpl(
       this.templatePath('test.js'),
-      this.destinationPath('test/spec/test.js')
+      this.destinationPath('test/spec/test.js'),
+      {
+        ui: this.options.ui,
+      }
     );
 
     this.fs.copyTpl(
